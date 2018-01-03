@@ -4,6 +4,8 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser');
 
+const port = 8080;
+
 // Set the views directory and template engine
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -32,9 +34,9 @@ app.get('/tags/:name.tag', function (req, res) {
 app.use('/api/todos/', api);
 
 // Start listening for connections
-app.listen(3000, function (err) {
+app.listen(port, function (err) {
     if (err) {
-        console.error('Cannot listen at port 3000', err);
+        console.error(`Cannot listen at port ${port}`, err);
     }
-    console.log('Todo app listening at port 3000');
+    console.log(`Todo app listening at port ${port}`);
 });
