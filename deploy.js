@@ -18,7 +18,7 @@ function cloneRepo() {
 	console.log("Cloning repo...");
 	// delete old copy of repo. Then, clone a fresh copy of repo from GitHub
 	cmd.get(
-		'cd .. && rm -rf riot-express-todo-list/ && git clone https://github.com/cymun111/riot-express-todo-list.git',
+		'git clone https://github.com/cymun111/riot-express-todo-list.git',
 		function(err, data, stderr){
 			console.log("cloneRepo callback\n\t err: " + err + "\n\t data: " + data + "\n\t stderr: " + stderr);
 			if(err == null){
@@ -120,6 +120,7 @@ function sshConnect() {
 		}
 	})
 	.then(function() {
+		cmd.get('rm -rf riot-express-todo-list/ ');
 		console.log("Deployment complete.");
 		process.exit(0);
 	})
